@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import ColorCard from "./components/ColorCard";
+import { nanoid } from "nanoid";
 
-function App() {
+console.clear();
+
+export default function App() {
+  const [cards, setCards] = useState([
+    {
+      hex: "#F2D7D5",
+      id: nanoid(),
+    },
+    {
+      hex: "#FADBD8",
+      id: nanoid(),
+    },
+    {
+      hex: "#EBDEF0",
+      id: nanoid(),
+    },
+    {
+      hex: "#E8DAEF",
+      id: nanoid(),
+    },
+    {
+      hex: "#D4E6F1",
+      id: nanoid(),
+    },
+    {
+      hex: "#D6EAF8",
+      id: nanoid(),
+    },
+    {
+      hex: "#D1F2EB",
+      id: nanoid(),
+    },
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        {cards.map((card) => {
+          //console.log(card);
+          //console.log("test");
+          return (
+            <ColorCard
+              className="card"
+              key={card.id}
+              cards={card}
+              onClick={() => {
+                console.log("test");
+              }}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
-
-export default App;
