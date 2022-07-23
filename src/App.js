@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
+import ColorSaverTitle from "./components/ColorSaverTitle";
+import ColorForm from "./components/ColorForm";
 import ColorCard from "./components/ColorCard";
 import { nanoid } from "nanoid";
 
@@ -38,23 +40,18 @@ export default function App() {
   ]);
 
   return (
-    <>
-      <div className="App">
+    <div className="app">
+      <ColorSaverTitle />
+      <hr />
+      <ColorForm />
+      <hr />
+      <div className="card-container">
         {cards.map((card) => {
           //console.log(card);
           //console.log("test");
-          return (
-            <ColorCard
-              className="card"
-              key={card.id}
-              cards={card}
-              onClick={() => {
-                console.log("test");
-              }}
-            />
-          );
+          return <ColorCard className="card" key={card.id} cards={card} />;
         })}
       </div>
-    </>
+    </div>
   );
 }
