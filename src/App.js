@@ -39,11 +39,22 @@ export default function App() {
     },
   ]);
 
+  function handleCards(card) {
+    setCards([
+      ...card,
+      {
+        hex: card.hex,
+        id: nanoid(),
+      },
+    ]);
+  }
+
   return (
     <div className="app">
       <ColorSaverTitle />
       <hr />
-      <ColorForm />
+      {/* choose different name */}
+      <ColorForm onCards={handleCards} />
       <hr />
       <div className="card-container">
         {cards.map((card) => {
