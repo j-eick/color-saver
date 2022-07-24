@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import ColorSaverTitle from "./components/ColorSaverTitle";
 import ColorForm from "./components/ColorForm";
 import ColorCard from "./components/ColorCard";
 import { nanoid } from "nanoid";
 
-console.clear();
+//console.clear();
 
 export default function App() {
   const [cards, setCards] = useState([
@@ -25,21 +25,9 @@ export default function App() {
       hex: "#E8DAEF",
       id: nanoid(),
     },
-    {
-      hex: "#D4E6F1",
-      id: nanoid(),
-    },
-    {
-      hex: "#D6EAF8",
-      id: nanoid(),
-    },
-    {
-      hex: "#D1F2EB",
-      id: nanoid(),
-    },
   ]);
 
-  function handleCards(card) {
+  function handleCardSubmit(card) {
     setCards([
       ...card,
       {
@@ -54,7 +42,7 @@ export default function App() {
       <ColorSaverTitle />
       <hr />
       {/* choose different name */}
-      <ColorForm onCards={handleCards} />
+      <ColorForm onCardSubmit={handleCardSubmit} />
       <hr />
       <div className="card-container">
         {cards.map((card) => {

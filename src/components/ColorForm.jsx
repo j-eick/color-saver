@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 console.clear();
 
-export default function ColorForm({ onCards }) {
-  const [zeug, setZeug] = useState();
+export default function ColorForm({ onCardSubmit }) {
+  const [newCard, setNewCard] = useState();
 
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   console.log(event.target);
-  // }
+  /**
+   * 
+   
+  - Enter HexCode + press submit
+    • 
+  - Generate new card
+  - Card should be added to Array
+
+  */
+
+  function onCardSubmit(event) {
+    event.preventDefault();
+    setNewCard([{}]);
+  }
 
   return (
     <div>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-        }}
-      >
-        <fieldset>
+      <form onSubmit={onCardSubmit}>
+        <fieldset className="inputfield">
           <legend>Add new Color</legend>
           <label htmlFor="hex-code" required></label>
           <input
@@ -26,10 +32,17 @@ export default function ColorForm({ onCards }) {
             id="hex-code"
             placeholder="enter hex-code"
             onChange={(event) => {
-              console.log(event.target.value);
+              setNewCard(event.target.value);
             }}
           />
           <input type="submit" value="submit" />
+          <label htmlFor="color-picker" required></label>
+          <input
+            type="color"
+            name="hex"
+            id="color-picker"
+            placeholder="enter hex-code"
+          />
         </fieldset>
       </form>
     </div>
